@@ -9,21 +9,24 @@
 </head>
 <body>
 
-  <main class="container">
-    <h1>Clima App</h1>
+ <main class="app">
+  <section class="weather-card">
+    <h1>Clima</h1>
 
     <form id="search-form">
-      <input 
-        type="text" 
-        id="city-input" 
-        placeholder="Digite o nome da cidade"
+      <input
+        type="text"
+        id="city-input"
+        placeholder="Buscar cidade"
         required
       />
       <button type="submit">Buscar</button>
     </form>
 
     <section id="weather-result"></section>
-  </main>
+  </section>
+</main>
+
 
   <script type="module" src="assets/js/main.js"></script>
 

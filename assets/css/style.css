@@ -1,33 +1,156 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+/* Reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* 🌑 Fundo fixo com imagem */
 body {
-  font-family:  Helvetica, sans-serif, Arial;
-  background: #f4f6f8;
-  color: #333;
+  font-family: "Inter", sans-serif;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+
+  /* ⚠️ Caminho corrigido (CSS → IMG) */
+  background-image: url("../img/nuvens-ceu.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
-.container {
-  max-width: 400px;
-  margin: 100px auto;
+/* Overlay escuro para legibilidade */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: -1;
+}
+
+/* App container */
+.app {
+  width: 100%;
+  max-width: 900px;
   padding: 20px;
-  background: #fff;
-  border-radius: 8px;
 }
 
-#weather-result {
-  margin-top: 20px;
+/* 🌤️ Card principal (glassmorphism) */
+.weather-card {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  border-radius: 20px;
+  padding: 32px;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+  transition: background 0.5s ease, color 0.5s ease;
 }
 
-.weather-info p {
-  margin-top: 8px;
+/* Título */
+.weather-card h1 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 20px;
 }
 
+/* Pesquisa */
+form {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 30px;
+}
+
+input {
+  flex: 1;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: none;
+  font-size: 1rem;
+  outline: none;
+}
+
+button {
+  padding: 12px 18px;
+  border-radius: 10px;
+  border: none;
+  background: #f1c40f;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background: #f39c12;
+}
+
+/* Resultado */
+#weather-result h2 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.temperature {
+  font-size: 4rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.details {
+  margin-top: 12px;
+  opacity: 0.85;
+  font-size: 0.95rem;
+}
+
+/* 🌈 Temas do card por clima */
+.weather-card.sunny {
+  background: rgba(255, 255, 255, 0.65);
+  color: #000;
+}
+
+
+.weather-card.cloudy {
+  background: rgba(99, 110, 114, 0.85);
+  color: #fff;
+}
+
+.weather-card.rainy {
+  background: rgba(52, 73, 94, 0.9);
+  color: #fff;
+}
+
+.weather-card.snowy {
+  background: rgba(236, 240, 241, 0.9);
+  color: #000;
+}
+
+/* Erro */
 .error {
-  color: #d63031;
-  font-weight: bold;
-  margin-top: 20px;
+  color: #ff7675;
+  font-weight: 500;
+  margin-top: 10px;
+}
+
+/* 📱 Responsividade básica */
+@media (max-width: 600px) {
+  .weather-card {
+    padding: 24px;
+  }
+
+  .temperature {
+    font-size: 3rem;
+  }
+
+  form {
+    flex-direction: column;
+  }
+
+  button {
+    width: 100%;
+  }
 }
