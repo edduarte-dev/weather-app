@@ -154,3 +154,22 @@ button:hover {
     width: 100%;
   }
 }
+
+.loading {
+  margin-top: 20px;
+  font-weight: 500;
+  opacity: 0.9;
+  animation: pulse 1.2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.4;
+  }
+}

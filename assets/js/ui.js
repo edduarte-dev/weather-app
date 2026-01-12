@@ -62,3 +62,14 @@ export function renderError(message) {
 export function clearWeather() {
   weatherResult.innerHTML = "";
 }
+
+export function showLoading() {
+  weatherResult.innerHTML = `
+    <p class="loading">⏳ Buscando clima...</p>
+  `;
+}
+
+export function hideLoading() {
+  weatherResult.innerHTML = "";
+}
+
