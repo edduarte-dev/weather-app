@@ -5,7 +5,7 @@
 }
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family:  Helvetica, sans-serif, Arial;
   background: #f4f6f8;
   color: #333;
 }
@@ -16,4 +16,18 @@ body {
   padding: 20px;
   background: #fff;
   border-radius: 8px;
+}
+
+#weather-result {
+  margin-top: 20px;
+}
+
+.weather-info p {
+  margin-top: 8px;
+}
+
+.error {
+  color: #d63031;
+  font-weight: bold;
+  margin-top: 20px;
 }
