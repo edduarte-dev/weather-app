@@ -173,3 +173,10 @@ button:hover {
     opacity: 0.4;
   }
 }
+
+.date {
+  font-size: 0.9rem;
+  opacity: 0.8;
+  margin-bottom: 8px;
+  text-transform: capitalize;
+}

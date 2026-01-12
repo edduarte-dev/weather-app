@@ -1,6 +1,26 @@
 const weatherResult = document.getElementById("weather-result");
 const card = document.querySelector(".weather-card");
 
+/**
+ * Formata data e hora local da cidade
+ */
+function formatDateTime(dateString, timezone) {
+  const date = new Date(dateString);
+
+  const formatted = new Intl.DateTimeFormat("pt-BR", {
+    weekday: "long",
+    hour: "2-digit",
+    minute: "2-digit",
+    timeZone: timezone
+  }).format(date);
+
+  // Capitaliza primeira letra (UX)
+  return formatted.charAt(0).toUpperCase() + formatted.slice(1);
+}
+
+/**
+ * Texto e ícone do clima
+ */
 function getWeatherInfo(code) {
   if (code === 0) return { text: "Ensolarado", icon: "☀️" };
   if (code <= 3) return { text: "Parcialmente nublado", icon: "⛅" };
@@ -12,7 +32,9 @@ function getWeatherInfo(code) {
   return { text: "Clima indefinido", icon: "❔" };
 }
 
-
+/**
+ * Classe visual do card por clima
+ */
 function getWeatherClass(code) {
   if (code === 0) return "sunny";
   if (code <= 3) return "cloudy";
@@ -21,6 +43,9 @@ function getWeatherClass(code) {
   return "cloudy";
 }
 
+/**
+ * Renderiza clima na tela
+ */
 export function renderWeather(city, country, weather) {
   card.className = "weather-card";
 
@@ -29,8 +54,14 @@ export function renderWeather(city, country, weather) {
 
   const info = getWeatherInfo(weather.weathercode);
 
+  const formattedDate = formatDateTime(
+    weather.time,
+    weather.timezone
+  );
+
   weatherResult.innerHTML = `
     <h2>${city}, ${country}</h2>
+    <p class="date">${formattedDate}</p>
 
     <div class="temperature">
       ${Math.round(weather.temperature)}°C
@@ -43,9 +74,6 @@ export function renderWeather(city, country, weather) {
     </div>
   `;
 }
-
-
-
 
 /**
  * Exibe mensagem de erro
@@ -63,13 +91,18 @@ export function clearWeather() {
   weatherResult.innerHTML = "";
 }
 
+/**
+ * Mostra loading
+ */
 export function showLoading() {
   weatherResult.innerHTML = `
     <p class="loading">⏳ Buscando clima...</p>
   `;
 }
 
+/**
+ * Remove loading
+ */
 export function hideLoading() {
   weatherResult.innerHTML = "";
 }
-
